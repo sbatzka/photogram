@@ -16,13 +16,22 @@ p = Photo.new
 p.caption = params[:the_caption]
 p.source = params[:the_source]
 p.save
-
 end
 
 def destroy
-p = Photo.find_by( :id => params[:id])
-p.destroy
+@photo = Photo.find_by( :id => params[:id])
+@photo.destroy
+end
 
+def edit_form
+  @photo = Photo.find_by( :id => params[:id])
+end
+
+def update_row
+@photo = Photo.find_by( :id => params[:id])
+@photo.caption = params[ :the_caption]
+@photo.source = params[ :the_source]
+@photo.save
 end
 
 end
